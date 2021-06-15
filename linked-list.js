@@ -50,7 +50,25 @@ class LinkedList {
   /** pop(): return & remove last item. */
 
   pop() {
-
+    if(this.length === 0){
+      throw new Error;
+    };
+    if(this.length === 1){
+      let tail = this.tail.val;
+      this.head = null;
+      this.tail = null;
+      this.length = 0;
+      return tail;
+    }
+    let node = this.head;
+    let tail = this.tail.val;
+    for(let i = 0; i < this.length - 2; i++){
+      node = node.next;
+    };
+    node.next = null;
+    this.tail = node;
+    this.length--
+    return tail;
   }
 
   /** shift(): return & remove first item. */
