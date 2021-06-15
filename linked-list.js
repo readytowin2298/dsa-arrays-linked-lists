@@ -1,9 +1,9 @@
 /** Node: node for a singly linked list. */
 
 class Node {
-  constructor(val) {
+  constructor(val, next = null) {
     this.val = val;
-    this.next = null;
+    this.next = next;
   }
 }
 
@@ -38,7 +38,13 @@ class LinkedList {
   /** unshift(val): add new value to start of list. */
 
   unshift(val) {
-
+    let node = new Node(val, this.head);
+    this.head = node;
+    if(!this.tail){
+      this.tail = node;
+    }
+    this.length++;
+    return undefined;
   }
 
   /** pop(): return & remove last item. */
